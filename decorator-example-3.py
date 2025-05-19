@@ -3,26 +3,26 @@
 
 '''
 Problem Statement:
-Create a decorator named uppercase_decorator that modifies the output of any function returning a string by converting it to uppercase. Apply this decorator to a function called say_hello() which returns the string "hello world". When called, say_hello() should return the uppercase string "HELLO WORLD".
+Create a decorator named uppercase_decorator that modifies the output of any function returning a string by converting it to uppercase.
+Apply this decorator to a function called say_hello() which returns the string "hello world". When called, say_hello() should return the uppercase string "HELLO WORLD".
 '''
-
-initial_string = "hello world"
 
 # define a decorator function
 def uppercase_decorator(say_hello):
     def inner_function():
-        print(f"original string: {say_hello()}")
+        initial_string = say_hello()
+	print(f"original_string: {initial_string}")
         result_string = initial_string.upper()
-        print("\n")
         print(f"uppercase string: {result_string}")
+	return result_string
     return inner_function
 
 # define a user-defined function
 @uppercase_decorator
 def say_hello():
-
-    return initial_string
+    return "hello world"
 
 # call the function
 say_hello()
+
 
